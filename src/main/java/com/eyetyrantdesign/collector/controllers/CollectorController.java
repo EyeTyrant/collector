@@ -36,7 +36,7 @@ public class CollectorController {
   }
 
   @PostMapping("add")
-  public  addItem(){
+  public String addItem(){
     return "redirect:";
   }
 
