@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class Item {
+public class DieCast {
 
   @Id
   @GeneratedValue
@@ -18,9 +18,9 @@ public class Item {
   private String brand;
   private String mfr;
 
-  public Item(){}
+  public DieCast(){}
 
-  public Item(Integer year, String name, String brand, String mfr) {
+  public DieCast(Integer year, String name, String brand, String mfr) {
     this.year = year;
     this.name = name;
     this.brand = brand;
@@ -71,12 +71,12 @@ public class Item {
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
-    if (!(o instanceof Item)) return false;
-    Item item = (Item) o;
-    return getYear().equals(item.getYear()) &&
-        getName().equals(item.getName()) &&
-        getBrand().equals(item.getBrand()) &&
-        getMfr().equals(item.getMfr());
+    if (!(o instanceof DieCast)) return false;
+    DieCast dieCast = (DieCast) o;
+    return getYear().equals(dieCast.getYear()) &&
+        getName().equals(dieCast.getName()) &&
+        getBrand().equals(dieCast.getBrand()) &&
+        getMfr().equals(dieCast.getMfr());
   }
 
   @Override

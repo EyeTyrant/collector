@@ -1,8 +1,9 @@
 package com.eyetyrantdesign.collector.controllers;
 
-import com.eyetyrantdesign.collector.models.Item;
-import com.eyetyrantdesign.collector.models.data.ItemRepository;
+import com.eyetyrantdesign.collector.models.DieCast;
+import com.eyetyrantdesign.collector.models.data.DieCastRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -11,7 +12,7 @@ import java.util.Optional;
 public class CollectorController {
 
   @Autowired
-  private ItemRepository itemRepository;
+  private DieCastRepository dieCastRepository;
 
 
   @RequestMapping("")
@@ -22,22 +23,29 @@ public class CollectorController {
 
 
 
-  @GetMapping("listall")
+  @GetMapping("list")
   @ResponseBody
-  public Iterable<Item> listAll(){
+  public Iterable<DieCast> listAll(){
 
-    return itemRepository.findAll();
+    return dieCastRepository.findAll();
   }
 
-  @GetMapping("listall/{id}")
+  @GetMapping("list/{id}")
   @ResponseBody
-  public Optional<Item> getItemById(@PathVariable Integer id){
-    return itemRepository.findById(id);
+  public Optional<DieCast> getItemById(@PathVariable Integer id){
+    return dieCastRepository.findById(id);
   }
 
   @PostMapping("add")
-  public String addItem(){
-    return "redirect:";
+  public DieCast addItem(@ModelAttribute Model model){
+    model.addAttribute(new DieCast());
+    DieCast newDieCast = new DieCast();
+    newDieCast.setName("White Lightning");
+    newDieCast.setMfr("Tyco");
+    newDieCast.setBrand("Matchbox");
+    newDieCast.setYear(1974);
+    newDieCast.toString();
+    return dieCastRepository.save(newDieCast);
   }
 
 }
