@@ -24,6 +24,7 @@ public class CollectorController {
 
 
   @GetMapping("list")
+  @CrossOrigin(origins = "http://localhost:4200")
   @ResponseBody
   public Iterable<DieCast> listAll(){
 
@@ -31,12 +32,14 @@ public class CollectorController {
   }
 
   @GetMapping("list/{id}")
+  @CrossOrigin(origins = "http://localhost:4200")
   @ResponseBody
   public Optional<DieCast> getItemById(@PathVariable Integer id){
     return dieCastRepository.findById(id);
   }
 
   @PostMapping("add")
+  @CrossOrigin(origins = "http://localhost:4200")
   public DieCast addItem(@ModelAttribute Model model){
     model.addAttribute(new DieCast());
     DieCast newDieCast = new DieCast();
