@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class CollectorController {
 
   @Autowired
@@ -24,7 +25,7 @@ public class CollectorController {
 
 
   @GetMapping("list")
-  @CrossOrigin(origins = "http://localhost:4200")
+//  @CrossOrigin(origins = "http://localhost:4200")
   @ResponseBody
   public Iterable<DieCast> listAll(){
 
@@ -32,22 +33,15 @@ public class CollectorController {
   }
 
   @GetMapping("list/{id}")
-  @CrossOrigin(origins = "http://localhost:4200")
+//  @CrossOrigin(origins = "http://localhost:4200")
   @ResponseBody
   public Optional<DieCast> getItemById(@PathVariable Integer id){
     return dieCastRepository.findById(id);
   }
 
   @PostMapping("add")
-  @CrossOrigin(origins = "http://localhost:4200")
-  public DieCast addItem(@ModelAttribute Model model){
-    model.addAttribute(new DieCast());
-    DieCast newDieCast = new DieCast();
-    newDieCast.setName("White Lightning");
-    newDieCast.setMfr("Tyco");
-    newDieCast.setBrand("Matchbox");
-    newDieCast.setYear(1974);
-    newDieCast.toString();
+//  @CrossOrigin(origins = "http://localhost:4200")
+  public DieCast addItem(@RequestBody DieCast newDieCast){
     return dieCastRepository.save(newDieCast);
   }
 
