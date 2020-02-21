@@ -23,7 +23,6 @@ public class CollectorController {
   }
 
 
-
   @GetMapping("list")
 //  @CrossOrigin(origins = "http://localhost:4200")
   @ResponseBody
